@@ -1,0 +1,10 @@
+@import './variables.scss';
+@import './mixins.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+
+@import '~ng-pick-datetime/assets/style/picker.min.css';
+
+.testing-autoprefixer {
+  display: flex;
+  animation: bar 1s infinite;
+}
