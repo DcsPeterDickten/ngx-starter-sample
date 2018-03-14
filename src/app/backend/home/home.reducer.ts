@@ -1,8 +1,8 @@
-import { IAction } from "@dcs/ngx-utils";
+import { IAction } from '@dcs/ngx-utils';
 
-import { HOME_GREET_WORLD, HOME_SET_NAME } from "./home.actions";
+import { HOME_GREET_WORLD, HOME_SET_NAME } from './home.actions';
 
-export const initialState: string = "Unknown";
+export const initialState: string = 'Unknown';
 
 export function homeReducer(
   state: string = initialState,
@@ -13,7 +13,7 @@ export function homeReducer(
       return action.payload;
 
     case HOME_GREET_WORLD:
-      return "World";
+      return 'World';
   }
 
   return state;

@@ -1,5 +1,5 @@
-import { IAction, IState } from "@dcs/ngx-utils";
-import { fromJS } from "immutable";
+import { IAction, IState } from '@dcs/ngx-utils';
+import { fromJS } from 'immutable';
 
 export const DEFAULT_INITIAL_STATE: IState = fromJS({
   entities: [],
@@ -15,13 +15,13 @@ export function defaultFetchReducer(
 ): IState {
   switch (action.type) {
     case actions.start:
-      return initialState.set("loading", true);
+      return initialState.set('loading', true);
 
     case actions.next:
-      return initialState.set("entities", fromJS(action.payload));
+      return initialState.set('entities', fromJS(action.payload));
 
     case actions.error:
-      return initialState.set("error", fromJS(action.payload));
+      return initialState.set('error', fromJS(action.payload));
   }
 
   return state;
@@ -35,16 +35,16 @@ export function defaultDeleteReducer(
 ): IState {
   switch (action.type) {
     case actions.start:
-      return state.set("loading", true);
+      return state.set('loading', true);
 
     case actions.next:
       const newList = state
-        .get("entities")
-        .filter((entry: any) => entry.get("id") !== action.payload.get("id"));
-      return initialState.set("entities", newList);
+        .get('entities')
+        .filter((entry: any) => entry.get('id') !== action.payload.get('id'));
+      return initialState.set('entities', newList);
 
     case actions.error:
-      return state.set("error", fromJS(action.payload)).set("loading", false);
+      return state.set('error', fromJS(action.payload)).set('loading', false);
   }
 
   return state;
@@ -57,16 +57,16 @@ export function defaultInsertReducer(
 ): IState {
   switch (action.type) {
     case actions.start:
-      return state.set("loading", true);
+      return state.set('loading', true);
 
     case actions.next:
       return state
-        .update("entities", entities => entities.push(fromJS(action.payload)))
-        .set("loading", false)
-        .set("error", null);
+        .update('entities', entities => entities.push(fromJS(action.payload)))
+        .set('loading', false)
+        .set('error', null);
 
     case actions.error:
-      return state.set("error", fromJS(action.payload)).set("loading", false);
+      return state.set('error', fromJS(action.payload)).set('loading', false);
   }
 
   return state;

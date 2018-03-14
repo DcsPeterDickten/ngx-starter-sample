@@ -1,25 +1,25 @@
-import { dispatch } from "@angular-redux/store";
-import { Injectable } from "@angular/core";
+import { dispatch } from '@angular-redux/store';
+import { Injectable } from '@angular/core';
 import {
   generateAsyncActionNames,
   IAction,
   IAsyncActionNames,
   RestService
-} from "@dcs/ngx-utils";
-import { fromJS } from "immutable";
+} from '@dcs/ngx-utils';
+import { fromJS } from 'immutable';
 
 export const fetchActions: IAsyncActionNames = generateAsyncActionNames(
-  "BOOKS_FETCH"
+  'BOOKS_FETCH'
 );
 export const insertActions: IAsyncActionNames = generateAsyncActionNames(
-  "BOOKS_INSERT"
+  'BOOKS_INSERT'
 );
 
 export const deleteActions: IAsyncActionNames = generateAsyncActionNames(
-  "BOOKS_DELETE"
+  'BOOKS_DELETE'
 );
 
-const BASE_URL = "books";
+const BASE_URL = 'books';
 
 @Injectable()
 export class BooksActions {
@@ -43,7 +43,7 @@ export class BooksActions {
 
   @dispatch()
   public deleteBook(pBook: Map<string, any>): IAction {
-    const url = BASE_URL + "/" + pBook.get("id");
+    const url = BASE_URL + '/' + pBook.get('id');
     return {
       type: deleteActions.base,
       payload: this.restService.delete(url).map(() => pBook)

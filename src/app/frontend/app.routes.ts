@@ -1,17 +1,17 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: "",
-    redirectTo: "books",
-    pathMatch: "full"
+    path: '',
+    redirectTo: 'books',
+    pathMatch: 'full'
   },
   {
-    path: "home",
-    loadChildren: "./home/home.module#HomeModule"
+    path: 'home',
+    loadChildren: './home/home.module#HomeModule'
   },
   {
-    path: "books",
-    loadChildren: "./books/books.module#BooksModule"
+    path: 'books',
+    loadChildren: './books/books.module#BooksModule'
   }
 ];

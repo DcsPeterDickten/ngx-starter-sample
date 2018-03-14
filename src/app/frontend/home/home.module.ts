@@ -17,19 +17,26 @@ const routes: Routes = [{ path: '', component: HomeComponent }];
     {
       provide: APP_TRANSLATIONS,
       useValue: { name: 'en', translations: en },
-      multi: true,
+      multi: true
     },
     {
       provide: APP_TRANSLATIONS,
       useValue: { name: 'de', translations: de },
-      multi: true,
-    },
-  ],
+      multi: true
+    }
+  ]
 })
 export class HomeModule {
-  constructor(translateService: TranslateService, @Inject(APP_TRANSLATIONS) translations: any) {
+  constructor(
+    translateService: TranslateService,
+    @Inject(APP_TRANSLATIONS) translations: any
+  ) {
     translations.forEach((translation: any) => {
-      translateService.setTranslation(translation.name, translation.translations, true);
+      translateService.setTranslation(
+        translation.name,
+        translation.translations,
+        true
+      );
     });
   }
 }

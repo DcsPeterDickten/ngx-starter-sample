@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
-import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
+import {
+  NgReduxTestingModule,
+  MockNgRedux
+} from '@angular-redux/store/testing';
 import { Subject } from 'rxjs/Subject';
 
 import { HomeComponent } from './home.component';
@@ -16,7 +19,7 @@ describe('testing a component as class', () => {
 
     TestBed.configureTestingModule({
       imports: [CommonModule, NgReduxTestingModule],
-      providers: [HomeActions],
+      providers: [HomeActions]
     });
   });
 
