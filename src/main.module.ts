@@ -1,22 +1,26 @@
-import { NgModule, Inject } from '@angular/core';
-import { NgReduxRouterModule, NgReduxRouter } from '@angular-redux/router';
-import { HttpClientModule } from '@angular/common/http';
-import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
+import { NgReduxRouter, NgReduxRouterModule } from "@angular-redux/router";
 import {
-  MainBaseModule,
-  IState,
-  RootReducer,
-  RootEpic,
-  NgxUtilsModule,
-  StableService,
+  DevToolsExtension,
+  NgRedux,
+  NgReduxModule
+} from "@angular-redux/store";
+import { HttpClientModule } from "@angular/common/http";
+import { Inject, NgModule } from "@angular/core";
+import {
   APP_ENVIRONMENT,
+  IState,
+  MainBaseModule,
+  NgxUtilsModule,
   RestService,
-} from '@dcs/ngx-utils';
+  RootEpic,
+  RootReducer,
+  StableService
+} from "@dcs/ngx-utils";
 
-import Environment from './environment';
-import { AppModule } from './app/frontend/app.module';
-import { AppComponent } from './app/frontend/app.component';
-import { AppRestService } from './app/services/app-rest-service';
+import { AppComponent } from "./app/frontend/app.component";
+import { AppModule } from "./app/frontend/app.module";
+import { AppRestService } from "./app/services/app-rest-service";
+import Environment from "./environment";
 
 export function provideEnvironment(): Environment {
   return new Environment();
@@ -29,13 +33,13 @@ export function provideEnvironment(): Environment {
     AppModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
-    NgxUtilsModule,
+    NgxUtilsModule
   ],
   providers: [
     StableService,
     { provide: RestService, useClass: AppRestService },
-    { provide: APP_ENVIRONMENT, useFactory: provideEnvironment },
-  ],
+    { provide: APP_ENVIRONMENT, useFactory: provideEnvironment }
+  ]
 })
 export class MainModule extends MainBaseModule {
   constructor(
@@ -47,6 +51,14 @@ export class MainModule extends MainBaseModule {
     stableService: StableService,
     @Inject(APP_ENVIRONMENT) environment: Environment
   ) {
-    super(store, devTools, rootReducer, rootEpic, ngReduxRouter, environment, stableService);
+    super(
+      store,
+      devTools,
+      rootReducer,
+      rootEpic,
+      ngReduxRouter,
+      environment,
+      stableService
+    );
   }
 }

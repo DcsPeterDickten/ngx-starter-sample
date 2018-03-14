@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs/Observable';
-import { PresentationalComponent } from '@dcs/ngx-utils';
+import { select } from "@angular-redux/store";
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { PresentationalComponent } from "@dcs/ngx-utils";
+import { fromJS } from "immutable";
+import { Observable } from "rxjs/Observable";
+import swal from "sweetalert2";
 
-import { BooksActions } from '../../backend/books/books.actions';
-import { booksSelector, booksLoading } from '../../backend/books/books.selectors';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { fromJS } from 'immutable';
-import swal from 'sweetalert2';
+import { BooksActions } from "../../backend/books/books.actions";
+import {
+  booksLoading,
+  booksSelector
+} from "../../backend/books/books.selectors";
 
 @Component({
-  selector: 'dcs-books',
-  templateUrl: './books.component.html',
-  styleUrls: ['./books.component.scss'],
+  selector: "dcs-books",
+  templateUrl: "./books.component.html",
+  styleUrls: ["./books.component.scss"]
 })
 export class BooksComponent extends PresentationalComponent implements OnInit {
   @select(booksSelector) public books$: Observable<any[]>;
@@ -26,24 +29,24 @@ export class BooksComponent extends PresentationalComponent implements OnInit {
 
     this.form = fb.group({
       // id: [''],
-      title: ['', Validators.required],
-      isbn: [''],
+      title: ["", Validators.required],
+      isbn: [""]
     });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.booksActions.fetchBooks();
   }
 
   public deleteBook(pBook: Map<string, any>) {
     swal({
-      title: 'Are you sure?',
-      text: `Book '${pBook.get('title')}' will be deleted`,
-      type: 'warning',
+      title: "Are you sure?",
+      text: `Book '${pBook.get("title")}' will be deleted`,
+      type: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
     }).then((result: any) => {
       if (result.value) {
         this.booksActions.deleteBook(pBook);

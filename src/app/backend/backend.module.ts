@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
 
-import { BooksModule } from './books/books.module';
+import { BooksModule } from "./books/books.module";
 
 @NgModule({
-  imports: [BooksModule],
+  imports: [BooksModule]
 })
 export class BackendModule {}

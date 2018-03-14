@@ -1,7 +1,8 @@
 {
-  "name": "@dcs/ngx-starter",
+  "name": "@dcs/ngx-starter-sample",
   "version": "2.0.0",
-  "description": "Sample project to show Angular project development at DCS Fürth",
+  "description":
+    "Sample project to show Angular project development at DCS Fürth",
   "main": "index.js",
   "scripts": {
     "compile": "webpack --config config/webpack.config.production.ts",
@@ -27,7 +28,7 @@
     "prepush": "npm run build:production",
     "version": "run-s  build:production changelog && git add CHANGELOG.md",
     "postversion": "git push --no-verify && git push --no-verify --tags",
-    "backend:mock": "json-server mock/db.json --port 3001 --delay 200"
+    "backend:mock": "npx json-server mock/db.json --port 3001 --delay 200"
   },
   "keywords": [],
   "author": "Peter Dickten <peter.dickten@dcs-fuerth.de>",
